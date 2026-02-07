@@ -1,12 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-</head>
-<body>
-  <h1>Hello, World!</h1>
-  <p>This is my first HTML page.</p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valentine's Invitation 💖</title>
+
+    <style>
+      body {
+        font-family: "Courier New", monospace;
+        background: linear-gradient(135deg, #9b3eec, #2307d6);
+        color: white;
+        text-align: center;
+        padding-top: 100px;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        padding: 40px;
+        border-radius: 20px;
+        display: inline-block;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+      }
+
+      button {
+        padding: 12px 30px;
+        margin: 10px;
+        border: none;
+        border-radius: 30px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+
+      button:hover {
+        transform: scale(1.1);
+      }
+
+      .yes {
+        background-color: #ff4d6d;
+        color: white;
+      }
+
+      .no {
+        background-color: #6c757d;
+        color: white;
+      }
+
+      #response {
+        margin-top: 20px;
+        font-size: 1.3rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Felkérhetném, hogy legyen a valentinom? 😺</h1>
+      <p>légyszi</p>
+
+      <form id="valentineForm">
+        <div class="buttons" id="buttonContainer">
+          <button
+            id="yesBtn"
+            type="button"
+            class="yes"
+            onclick="answer('igen')"
+          >
+            Igen 😻
+          </button>
+          <button id="noBtn" type="button" class="no" onclick="answer('nem')">
+            Nem 😾
+          </button>
+        </div>
+      </form>
+
+      <div id="response"></div>
+    </div>
+
+    <script>
+      const container = document.getElementById("buttonContainer");
+      const yesBtn = document.getElementById("yesBtn");
+      const noBtn = document.getElementById("noBtn");
+      const response = document.getElementById("response");
+
+      function swapButtons() {
+        const first = container.children[0];
+        const second = container.children[1];
+        container.insertBefore(second, first);
+      }
+
+      noBtn.addEventListener("mouseenter", swapButtons);
+      function answer(choice) {
+        if (choice === "igen") {
+          response.innerHTML = "Köszönöm bizalmát";
+        } else {
+          response.innerHTML = "wtf";
+        }
+      }
+    </script>
+  </body>
 </html>
