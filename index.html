@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Valentine's Invitation 💖</title>
-
     <style>
       body {
         font-family: "Courier New", monospace;
@@ -62,12 +61,27 @@
         font-size: 1.3rem;
         font-weight: bold;
       }
+
+      .no.disappear {
+        animation: vanish 0.6s ease forwards;
+      }
+
+      @keyframes vanish {
+        0% {
+          opacity: 1;
+          transform: translateY(0) rotate(0deg);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-200px) rotate(720deg);
+        }
+      }
     </style>
   </head>
   <body>
     <div class="card">
       <h1>Felkérhetném, hogy legyen a valentinom? 😺</h1>
-      <p>légyszi</p>
+      <p>Program: február 14 Széchényi fürdő.</p>
 
       <form id="valentineForm">
         <div class="buttons" id="buttonContainer">
@@ -100,12 +114,13 @@
         container.insertBefore(second, first);
       }
 
-      noBtn.addEventListener("mouseenter", swapButtons);
       function answer(choice) {
         if (choice === "igen") {
+          noBtn.classList.add("disappear")
           response.innerHTML = "Köszönöm bizalmát";
         } else {
-          response.innerHTML = "wtf";
+          response.innerHTML = "hupsz, véletlen mellé kattintottál.";
+          noBtn.classList.add("disappear");
         }
       }
     </script>
